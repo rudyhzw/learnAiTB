@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleA2UIActivity 架构图</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        h1 { color: #fff; text-align: center; margin-bottom: 30px; font-size: 28px; }
+        .section { background: rgba(255,255,255,0.95); border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+        .section-title { color: #ff6600; font-size: 18px; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #ff6600; }
+        .component-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .component { color: white; padding: 15px; border-radius: 8px; text-align: center; }
+        .component.data { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+        .component.ui { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .component.core { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .component-name { font-weight: bold; font-size: 14px; }
+        .component-desc { font-size: 11px; opacity: 0.9; margin-top: 5px; }
+        .flow-section { margin-top: 20px; }
+        .flow-item { display: flex; align-items: center; padding: 12px; background: #f8f9fa; border-radius: 8px; margin-bottom: 10px; }
+        .flow-number { background: #ff6600; color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 15px; flex-shrink: 0; }
+        .flow-text { color: #333; }
+        .highlight { color: #ff6600; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SimpleA2UIActivity 架构图</h1>
+        
+        <div class="section">
+            <div class="section-title">核心组件</div>
+            <div class="component-grid">
+                <div class="component core">
+                    <div class="component-name">SimpleA2UIActivity</div>
+                    <div class="component-desc">主Activity<br/>处理生命周期</div>
+                </div>
+                <div class="component data">
+                    <div class="component-name">A2UIDataSource</div>
+                    <div class="component-desc">数据源<br/>提供JSON数据</div>
+                </div>
+                <div class="component ui">
+                    <div class="component-name">SimpleProductAdapter</div>
+                    <div class="component-desc">商品列表适配器<br/>RecyclerView</div>
+                </div>
+                <div class="component ui">
+                    <div class="component-name">BannerAdapter</div>
+                    <div class="component-desc">Banner轮播适配器<br/>ViewPager2</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">数据流程</div>
+            <div class="flow-section">
+                <div class="flow-item">
+                    <div class="flow-number">1</div>
+                    <div class="flow-text">用户启动 → <span class="highlight">onCreate()</span> → setContentView加载XML布局</div>
+                </div>
+                <div class="flow-item">
+                    <div class="flow-number">2</div>
+                    <div class="flow-text">调用 <span class="highlight">initViews()</span> → 初始化View组件 & RecyclerView</div>
+                </div>
+                <div class="flow-item">
+                    <div class="flow-number">3</div>
+                    <div class="flow-text">调用 <span class="highlight">loadData()</span> → A2UIDataSource获取数据</div>
+                </div>
+                <div class="flow-item">
+                    <div class="flow-number">4</div>
+                    <div class="flow-text">执行 <span class="highlight">renderBanners/Categories/Products()</span> → 渲染UI</div>
+                </div>
+                <div class="flow-item">
+                    <div class="flow-number">5</div>
+                    <div class="flow-text">点击商品 → <span class="highlight">更新TextView</span> → notifyItemChanged</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">UI层次结构</div>
+            <div class="mermaid">
+graph TD
+    A[LinearLayout<br/>根布局] --> B[Header<br/>橙色标题栏]
+    A --> C[NestedScrollView<br/>滚动容器]
+    C --> D[LinearLayout<br/>内容容器]
+    D --> E[ViewPager2<br/>Banner轮播]
+    D --> F[LinearLayout<br/>指示器]
+    D --> G[HorizontalScrollView<br/>分类横向滚动]
+    D --> H[TextView<br/>推荐标题]
+    D --> I[RecyclerView<br/>商品网格]
+    I --> J[GridLayoutManager<br/>2列布局]
+    J --> K[SimpleProductAdapter]
+    K --> L[item_simple_product.xml<br/>商品卡片]
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">文件结构</div>
+            <pre style="background:#f5f5f5;padding:15px;border-radius:8px;overflow-x:auto;font-size:12px;">
+app/src/main/
+├── java/com/example/taobao/
+│   ├── SimpleA2UIActivity.kt      # 主Activity
+│   ├── SimpleProductAdapter.kt    # 商品列表适配器
+│   ├── BannerAdapter.kt           # Banner轮播适配器
+│   └── a2ui/
+│       └── A2UIDataSource.kt      # 测试数据源
+├── res/layout/
+│   ├── activity_simple_a2ui.xml   # 主布局XML
+│   └── item_simple_product.xml    # 商品卡片布局
+└── assets/
+    └── a2ui_main_page.json        # JSON测试数据
+            </pre>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">优化点</div>
+            <div class="flow-section">
+                <div class="flow-item">
+                    <div class="flow-number">✓</div>
+                    <div class="flow-text"><span class="highlight">XML布局</span> - UI与逻辑分离，代码更清晰</div>
+                </div>
+                <div class="flow-item">
+                    <div class="flow-number">✓</div>
+                    <div class="flow-text"><span class="highlight">RecyclerView</span> - 高效渲染大量商品列表</div>
+                </div>
+                <div class="flow-item">
+                    <div class="flow-number">✓</div>
+                    <div class="flow-text"><span class="highlight">ViewPager2</span> - Banner轮播</div>
+                </div>
+                <div class="flow-item">
+                    <div class="flow-number">✓</div>
+                    <div class="flow-text"><span class="highlight">局部更新</span> - 点击只更新单个Item，无闪屏</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

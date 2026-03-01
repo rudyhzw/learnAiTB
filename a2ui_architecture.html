@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A2UI 架构图</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        .box {
+            transition: all 0.3s ease;
+        }
+        .box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .arrow {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen p-8">
+    <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-bold text-center text-slate-800 mb-2">A2UI 协议实现架构图</h1>
+        <p class="text-center text-slate-500 mb-8">Google A2UI Protocol - Android Client Implementation</p>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- 左侧：数据流 -->
+            <div class="bg-white rounded-2xl p-6 shadow-lg">
+                <h2 class="text-xl font-bold text-slate-700 mb-4 flex items-center">
+                    <span class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white text-sm mr-2">1</span>
+                    数据流程
+                </h2>
+                
+                <div class="space-y-4">
+                    <div class="box bg-gradient-to-r from-orange-50 to-orange-100 border-l-4 border-orange-500 p-4 rounded-lg">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center text-white font-bold mr-3">JSON</div>
+                            <div>
+                                <h3 class="font-semibold text-slate-800">Agent / Server</h3>
+                                <p class="text-sm text-slate-500">A2UI JSONL 数据源</p>
+                            </div>
+                        </div>
+                        <div class="mt-2 text-xs text-slate-400">
+                            createSurface / updateDataModel / updateComponents
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center">
+                        <div class="arrow text-orange-400 text-2xl">↓</div>
+                    </div>
+                    
+                    <div class="box bg-gradient-to-r from-blue-50 to-blue-100 border-l-4 border-blue-500 p-4 rounded-lg">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center text-white font-bold mr-3">解析</div>
+                            <div>
+                                <h3 class="font-semibold text-slate-800">A2UIJsonDataSource</h3>
+                                <p class="text-sm text-slate-500">JSONL 解析器</p>
+                            </div>
+                        </div>
+                        <div class="mt-2 text-xs text-slate-400">
+                            loadMessagesFromAsset() / simulateStreamWithDelay()
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center">
+                        <div class="arrow text-blue-400 text-2xl">↓</div>
+                    </div>
+                    
+                    <div class="box bg-gradient-to-r from-purple-50 to-purple-100 border-l-4 border-purple-500 p-4 rounded-lg">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center text-white font-bold mr-3">消息</div>
+                            <div>
+                                <h3 class="font-semibold text-slate-800">A2UIMessage</h3>
+                                <p class="text-sm text-slate-500">协议消息对象</p>
+                            </div>
+                        </div>
+                        <div class="mt-2 text-xs text-slate-400">
+                            A2UIMessageParser 解析 JSON
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center">
+                        <div class="arrow text-purple-400 text-2xl">↓</div>
+                    </div>
+                    
+                    <div class="box bg-gradient-to-r from-green-50 to-green-100 border-l-4 border-green-500 p-4 rounded-lg">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center text-white font-bold mr-3">处理</div>
+                            <div>
+                                <h3 class="font-semibold text-slate-800">A2UIStreamHandler</h3>
+                                <p class="text-sm text-slate-500">流式消息处理器</p>
+                            </div>
+                        </div>
+                        <div class="mt-2 text-xs text-slate-400">
+                            处理 createSurface / updateDataModel / updateComponents
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 右侧：核心组件 -->
+            <div class="bg-white rounded-2xl p-6 shadow-lg">
+                <h2 class="text-xl font-bold text-slate-700 mb-4 flex items-center">
+                    <span class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center text-white text-sm mr-2">2</span>
+                    核心组件
+                </h2>
+                
+                <div class="space-y-4">
+                    <div class="box bg-gradient-to-r from-amber-50 to-amber-100 border-l-4 border-amber-500 p-4 rounded-lg">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-amber-500 rounded-xl flex items-center justify-center text-white font-bold mr-3">Surface</div>
+                            <div>
+                                <h3 class="font-semibold text-slate-800">A2UISurfaceManager</h3>
+                                <p class="text-sm text-slate-500">Surface 管理器</p>
+                            </div>
+                        </div>
+                        <div class="mt-2 text-xs text-slate-400">
+                            createSurface() / deleteSurface() / updateDataModel() / getDataAtPath()
+                        </div>
+                    </div>
+                    
+                    <div class="ml-6 border-l-2 border-dashed border-slate-300 pl-4 space-y-3">
+                        <div class="box bg-gradient-to-r from-cyan-50 to-cyan-100 p-3 rounded-lg">
+                            <h4 class="font-medium text-slate-700">A2UISurface</h4>
+                            <p class="text-xs text-slate-400">UI渲染区域容器</p>
+                        </div>
+                        <div class="box bg-gradient-to-r from-pink-50 to-pink-100 p-3 rounded-lg">
+                            <h4 class="font-medium text-slate-700">数据模型</h4>
+                            <p class="text-xs text-slate-400">存储运行时数据 / 响应式更新</p>
+                        </div>
+                    </div>
+                    
+                    <div class="box bg-gradient-to-r from-indigo-50 to-indigo-100 border-l-4 border-indigo-500 p-4 rounded-lg">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-indigo-500 rounded-xl flex items-center justify-center text-white font-bold mr-3">渲染</div>
+                            <div>
+                                <h3 class="font-semibold text-slate-800">A2UIRenderer</h3>
+                                <p class="text-sm text-slate-500">组件渲染器</p>
+                            </div>
+                        </div>
+                        <div class="mt-2 text-xs text-slate-400">
+                            30+ 组件类型 / 数据绑定 / 事件处理
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 组件类型 -->
+        <div class="mt-8 bg-white rounded-2xl p-6 shadow-lg">
+            <h2 class="text-xl font-bold text-slate-700 mb-4 flex items-center">
+                <span class="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center text-white text-sm mr-2">3</span>
+                支持的组件类型
+            </h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                <div class="bg-slate-100 rounded-lg p-2 text-center text-sm text-slate-600">Text</div>
+                <div class="bg-slate-100 rounded-lg p-2 text-center text-sm text-slate-600">Button</div>
+                <div class="bg-slate-100 rounded-lg p-2 text-center text-sm text-slate-600">Row</div>
+                <div class="bg-slate-100 rounded-lg p-2 text-center text-sm text-slate-600">Column</div>
+                <div class="bg-slate-100 rounded-lg p-2 text-center text-sm text-slate-600">Image</div>
+                <div class="bg-slate-100 rounded-lg p-2 text-center text-sm text-slate-600">Card</div>
+                <div class="bg-slate-100 rounded-lg p-2 text-center text-sm text-slate-600">List</div>
+                <div class="bg-slate-100 rounded-lg p-2 text-center text-sm text-slate-600">Grid</div>
+                <div class="bg-slate-100 rounded-lg p-2 text-center text-sm text-slate-600">ScrollView</div>
+                <div class="bg-slate-100 rounded-lg p-2 text-center text-sm text-slate-600">Input</div>
+                <div class="bg-slate-100 rounded-lg p-2 text-center text-sm text-slate-600">Badge</div>
+                <div class="bg-slate-100 rounded-lg p-2 text-center text-sm text-slate-600">Spacer</div>
+                <div class="bg-slate-100 rounded-lg p-2 text-center text-sm text-slate-600">Divider</div>
+                <div class="bg-slate-100 rounded-lg p-2 text-center text-sm text-slate-600">Avatar</div>
+                <div class="bg-slate-100 rounded-lg p-2 text-center text-sm text-slate-600">Loading</div>
+                <div class="bg-slate-100 rounded-lg p-2 text-center text-sm text-slate-600">FlatList</div>
+                <div class="bg-slate-100 rounded-lg p-2 text-center text-sm text-slate-600">...</div>
+            </div>
+        </div>
+        
+        <!-- A2UI 消息类型 -->
+        <div class="mt-8 bg-white rounded-2xl p-6 shadow-lg">
+            <h2 class="text-xl font-bold text-slate-700 mb-4 flex items-center">
+                <span class="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center text-white text-sm mr-2">4</span>
+                A2UI 消息类型 (v0.9)
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl p-4 text-white">
+                    <h3 class="font-bold text-lg">createSurface</h3>
+                    <p class="text-orange-100 text-sm mt-1">创建Surface</p>
+                    <div class="mt-3 text-xs bg-orange-700 rounded p-2">
+                        surfaceId<br>catalogId<br>theme
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-4 text-white">
+                    <h3 class="font-bold text-lg">updateDataModel</h3>
+                    <p class="text-blue-100 text-sm mt-1">更新数据模型</p>
+                    <div class="mt-3 text-xs bg-blue-700 rounded p-2">
+                        surfaceId<br>path<br>data
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl p-4 text-white">
+                    <h3 class="font-bold text-lg">updateComponents</h3>
+                    <p class="text-purple-100 text-sm mt-1">更新UI组件</p>
+                    <div class="mt-3 text-xs bg-purple-700 rounded p-2">
+                        surfaceId<br>components[]<br>id / component / children
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-red-500 to-red-600 rounded-xl p-4 text-white">
+                    <h3 class="font-bold text-lg">deleteSurface</h3>
+                    <p class="text-red-100 text-sm mt-1">删除Surface</p>
+                    <div class="mt-3 text-xs bg-red-700 rounded p-2">
+                        surfaceId
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 项目结构 -->
+        <div class="mt-8 bg-white rounded-2xl p-6 shadow-lg">
+            <h2 class="text-xl font-bold text-slate-700 mb-4 flex items-center">
+                <span class="w-8 h-8 bg-teal-500 rounded-lg flex items-center justify-center text-white text-sm mr-2">5</span>
+                项目文件结构
+            </h2>
+            
+            <div class="font-mono text-sm bg-slate-800 text-slate-200 p-4 rounded-lg overflow-x-auto">
+                <div><span class="text-teal-400">app/src/main/</span></div>
+                <div class="ml-4"><span class="text-yellow-400">├── java/com/example/taobao/</span></div>
+                <div class="ml-8"><span class="text-yellow-400">├── MainActivity.kt</span> <span class="text-slate-500"># 主页面</span></div>
+                <div class="ml-8"><span class="text-yellow-400">├── ProductActivity.kt</span> <span class="text-slate-500"># 商品详情</span></div>
+                <div class="ml-8"><span class="text-yellow-400">├── A2UIActivity.kt</span> <span class="text-slate-500"># A2UI演示页</span></div>
+                <div class="ml-8"><span class="text-yellow-400">└── a2ui/</span></div>
+                <div class="ml-12"><span class="text-blue-400">├── A2UIMessage.kt</span> <span class="text-slate-500"># 消息类型定义</span></div>
+                <div class="ml-12"><span class="text-blue-400">├── A2UIComponentType.kt</span> <span class="text-slate-500"># 组件类型常量</span></div>
+                <div class="ml-12"><span class="text-blue-400">├── A2UIMessageParser.kt</span> <span class="text-slate-500"># JSON解析器</span></div>
+                <div class="ml-12"><span class="text-blue-400">├── A2UIJsonDataSource.kt</span> <span class="text-slate-500"># JSON数据源</span></div>
+                <div class="ml-12"><span class="text-blue-400">├── A2UIStreamHandler.kt</span> <span class="text-slate-500"># 流式处理器</span></div>
+                <div class="ml-12"><span class="text-blue-400">├── A2UISurfaceManager.kt</span> <span class="text-slate-500"># Surface管理器</span></div>
+                <div class="ml-12"><span class="text-blue-400">├── A2UIRenderer.kt</span> <span class="text-slate-500"># 组件渲染器</span></div>
+                <div class="ml-12"><span class="text-blue-400">└── A2UIDataSource.kt</span> <span class="text-slate-500"># 示例数据</span></div>
+                <div class="ml-4"><span class="text-yellow-400">└── assets/</span></div>
+                <div class="ml-8"><span class="text-green-400">├── a2ui_main_page.json</span> <span class="text-slate-500"># 首页数据</span></div>
+                <div class="ml-8"><span class="text-green-400">└── a2ui_product_detail.json</span> <span class="text-slate-500"># 商品详情数据</span></div>
+            </div>
+        </div>
+        
+        <!-- 页脚 -->
+        <div class="mt-8 text-center text-slate-400 text-sm">
+            <p>A2UI (Agent to UI) Protocol - Google Open Source Project</p>
+            <p class="mt-1">基于 A2UI v0.9 协议实现</p>
+        </div>
+    </div>
+</body>
+</html>

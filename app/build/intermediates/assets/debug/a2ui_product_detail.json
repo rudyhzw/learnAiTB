@@ -1,0 +1,567 @@
+{
+  "version": "v0.9",
+  "createSurface": {
+    "surfaceId": "product_detail_1",
+    "catalogId": "https://a2ui.org/specification/v0_9/standard_catalog.json"
+  }
+}
+---
+{
+  "version": "v0.9",
+  "updateDataModel": {
+    "surfaceId": "product_detail_1",
+    "path": "/",
+    "data": {
+      "product": {
+        "id": 1,
+        "title": "【好评如潮】纯棉T恤女短袖 宽松百搭 学生宿舍必备",
+        "price": "59.90",
+        "originalPrice": "89.90",
+        "discount": "6.7折",
+        "sales": 12580,
+        "stock": 256,
+        "shop": "优品汇旗舰店",
+        "shopScore": "4.9",
+        "shopIcon": "https://placehold.co/80x80/FF6600/FFFFFF?text=店铺",
+        "location": "杭州",
+        "description": "【品质保证】本店产品均为正品，质量有保障！\n【关于发货】下单后48小时内发货，全国包邮。\n【关于售后】7天无理由退换货，15天质量问题包换。\n【温馨提醒】由于拍摄光线和显示器差异，实物颜色可能略有不同，请以实物为准。",
+        "images": [
+          {"url": "https://picsum.photos/seed/tshirtDetail1/750/750", "type": "main", "alt": "主图"},
+          {"url": "https://picsum.photos/seed/tshirtDetail1a/750/750", "type": "detail", "alt": "细节图1"},
+          {"url": "https://picsum.photos/seed/tshirtDetail1b/750/750", "type": "detail", "alt": "细节图2"},
+          {"url": "https://picsum.photos/seed/tshirtDetail1c/750/750", "type": "detail", "alt": "模特图"},
+          {"url": "https://picsum.photos/seed/tshirtDetail1d/750/750", "type": "detail", "alt": "包装图"}
+        ],
+        "thumbnails": [
+          "https://picsum.photos/seed/tshirtThumb1a/100/100",
+          "https://picsum.photos/seed/tshirtThumb1b/100/100",
+          "https://picsum.photos/seed/tshirtThumb1c/100/100",
+          "https://picsum.photos/seed/tshirtThumb1d/100/100",
+          "https://picsum.photos/seed/tshirtThumb1e/100/100"
+        ],
+        "isFreeShipping": true,
+        "isVip": false,
+        "isSelfRun": true,
+        "couponAmount": 5.0,
+        "points": 599,
+        "tags": ["好评如潮", "热卖", "学生必备"],
+        "features": ["纯棉面料", "透气舒适", "宽松百搭", "多色可选"],
+        "brand": "优品汇",
+        "model": "YPH-001",
+        "weight": "200g",
+        "material": "100%纯棉"
+      },
+      "sku": [
+        {"name": "颜色", "options": [
+          {"value": "白色", "image": "https://placehold.co/50x50/FFFFFF/000000?text=白", "stock": 50},
+          {"value": "黑色", "image": "https://placehold.co/50x50/000000/FFFFFF?text=黑", "stock": 45},
+          {"value": "蓝色", "image": "https://placehold.co/50x50/007AFF/FFFFFF?text=蓝", "stock": 38},
+          {"value": "灰色", "image": "https://placehold.co/50x50/999999/FFFFFF?text=灰", "stock": 30}
+        ]},
+        {"name": "尺码", "options": [
+          {"value": "S", "stock": 40},
+          {"value": "M", "stock": 55},
+          {"value": "L", "stock": 48},
+          {"value": "XL", "stock": 35},
+          {"value": "XXL", "stock": 28}
+        ]}
+      ],
+      "service": [
+        {"icon": "✅", "text": "7天无理由", "desc": "满足条件可无理由退款"},
+        {"icon": "🚚", "text": "免运费", "desc": "全场包邮"},
+        {"icon": "🛡️", "text": "正品保证", "desc": "官方正品授权"},
+        {"icon": "⏰", "text": "72小时发货", "desc": "快速配送"}
+      ],
+      "reviews": [
+        {"user": "t***1", "avatar": "https://placehold.co/40x40/FF6600/FFFFFF?text=t", "content": "质量很好，面料舒适透气，穿着很舒服！物流也很快，包装完整！", "score": 5, "date": "2024-01-15", "images": ["https://picsum.photos/seed/review1a/200/200"]},
+        {"user": "l***8", "avatar": "https://placehold.co/40x40/FF6600/FFFFFF?text=l", "content": "性价比很高，会回购的！尺码标准，颜色也好看", "score": 5, "date": "2024-01-14", "images": []},
+        {"user": "w***3", "avatar": "https://placehold.co/40x40/FF6600/FFFFFF?text=w", "content": "和描述一致，很满意。客服态度也很好", "score": 4, "date": "2024-01-13", "images": ["https://picsum.photos/seed/review3a/200/200", "https://picsum.photos/seed/review3b/200/200"]},
+        {"user": "m***6", "avatar": "https://placehold.co/40x40/FF6600/FFFFFF?text=m", "content": "给男朋友买的，大小合适，质量不错", "score": 5, "date": "2024-01-12", "images": []}
+      ],
+      "recommend": [
+        {"id": 21, "title": "【爆款】纯棉袜子运动袜", "price": "19.90", "image": "https://picsum.photos/seed/socks21/200/200", "sales": 45600},
+        {"id": 22, "title": "夏季冰丝内裤男士", "price": "29.90", "image": "https://picsum.photos/seed/underwear22/200/200", "sales": 32100},
+        {"id": 23, "title": "纯棉家居服套装", "price": "69.00", "image": "https://picsum.photos/seed/pajamas23/200/200", "sales": 18900},
+        {"id": 24, "title": "韩版休闲裤子女", "price": "49.90", "image": "https://picsum.photos/seed/pants24/200/200", "sales": 25600}
+      ]
+    }
+  }
+}
+---
+{
+  "version": "v0.9",
+  "updateComponents": {
+    "surfaceId": "product_detail_1",
+    "components": [
+      {
+        "id": "root",
+        "component": {
+          "ScrollView": {"backgroundColor": "#F5F5F5"}
+        },
+        "children": {
+          "explicitList": ["image_gallery", "price_card", "coupon_card", "sku_card", "service_card", "shop_card", "detail_tabs", "review_card", "recommend_card", "bottom_spacer"]
+        }
+      },
+      {
+        "id": "image_gallery",
+        "component": {
+          "Column": {"backgroundColor": "#FFFFFF"}
+        },
+        "children": {
+          "explicitList": ["main_image", "thumbnail_row"]
+        }
+      },
+      {
+        "id": "main_image",
+        "component": {
+          "Image": {"src": {"binding": "product.images.0.url"}, "width": "match", "height": 375, "objectFit": "cover"}
+        }
+      },
+      {
+        "id": "thumbnail_row",
+        "component": {
+          "Row": {"padding": 8, "spacing": 8, "align": "center"}
+        },
+        "children": {
+          "dataBinding": "/product.thumbnails",
+          "templateComponentId": "thumbnail_item"
+        }
+      },
+      {
+        "id": "thumbnail_item",
+        "component": {
+          "Image": {"src": {"binding": ""}, "width": 50, "height": 50, "cornerRadius": 4}
+        }
+      },
+      {
+        "id": "price_card",
+        "component": {
+          "Column": {"backgroundColor": "#FFFFFF", "padding": 12, "spacing": 8, "marginTop": 8}
+        },
+        "children": {
+          "explicitList": ["price_row", "discount_label", "sales_row"]
+        }
+      },
+      {
+        "id": "price_row",
+        "component": {
+          "Row": {"align": "center", "spacing": 8}
+        },
+        "children": {
+          "explicitList": ["current_price", "original_price", "discount_badge"]
+        }
+      },
+      {
+        "id": "current_price",
+        "component": {
+          "Text": {"text": {"literalString": "¥", "binding": "product.price"}, "fontSize": 28, "fontWeight": true, "color": "#FF6600"}
+        }
+      },
+      {
+        "id": "original_price",
+        "component": {
+          "Text": {"text": {"literalString": "¥", "binding": "product.originalPrice"}, "fontSize": 14, "color": "#999999"}
+        }
+      },
+      {
+        "id": "discount_badge",
+        "component": {
+          "Badge": {"text": {"binding": "product.discount"}, "backgroundColor": "#FF6600", "color": "#FFFFFF"}
+        }
+      },
+      {
+        "id": "discount_label",
+        "component": {
+          "Text": {"text": "促销：满50减5元", "fontSize": 12, "color": "#FF6600"}
+        }
+      },
+      {
+        "id": "sales_row",
+        "component": {
+          "Row": {"align": "center", "spacing": 16}
+        },
+        "children": {
+          "explicitList": ["sales_count", "stock_count", "points_text"]
+        }
+      },
+      {
+        "id": "sales_count",
+        "component": {
+          "Text": {"text": {"binding": "product.sales"}, "fontSize": 12, "color": "#999999"}
+        }
+      },
+      {
+        "id": "stock_count",
+        "component": {
+          "Text": {"text": {"binding": "product.stock"}, "fontSize": 12, "color": "#999999"}
+        }
+      },
+      {
+        "id": "points_text",
+        "component": {
+          "Text": {"text": {"binding": "product.points"}, "fontSize": 12, "color": "#FF6600"}
+        }
+      },
+      {
+        "id": "coupon_card",
+        "component": {
+          "Row": {"backgroundColor": "#FFFFFF", "padding": 12, "align": "center", "marginTop": 8}
+        },
+        "children": {
+          "explicitList": ["coupon_label", "coupon_value", "coupon_action"]
+        }
+      },
+      {
+        "id": "coupon_label",
+        "component": {
+          "Badge": {"text": "券", "backgroundColor": "#FF6600", "color": "#FFFFFF"}
+        }
+      },
+      {
+        "id": "coupon_value",
+        "component": {
+          "Text": {"text": "满50减5", "fontSize": 14, "color": "#FF6600"}
+        }
+      },
+      {
+        "id": "coupon_action",
+        "component": {
+          "Button": {"text": "领取", "fontSize": 12, "backgroundColor": "#FF6600", "color": "#FFFFFF"}
+        }
+      },
+      {
+        "id": "sku_card",
+        "component": {
+          "Column": {"backgroundColor": "#FFFFFF", "padding": 12, "spacing": 8, "marginTop": 8}
+        },
+        "children": {
+          "explicitList": ["sku_color", "sku_size"]
+        }
+      },
+      {
+        "id": "sku_color",
+        "component": {
+          "Row": {"align": "center", "spacing": 12}
+        },
+        "children": {
+          "explicitList": ["sku_color_label", "sku_color_options"]
+        }
+      },
+      {
+        "id": "sku_color_label",
+        "component": {
+          "Text": {"text": "颜色", "fontSize": 14, "color": "#666666", "width": 60}
+        }
+      },
+      {
+        "id": "sku_color_options",
+        "component": {
+          "Row": {"spacing": 8}
+        },
+        "children": {
+          "dataBinding": "/product.sku.0.options",
+          "templateComponentId": "sku_option_item"
+        }
+      },
+      {
+        "id": "sku_size",
+        "component": {
+          "Row": {"align": "center", "spacing": 12}
+        },
+        "children": {
+          "explicitList": ["sku_size_label", "sku_size_options"]
+        }
+      },
+      {
+        "id": "sku_size_label",
+        "component": {
+          "Text": {"text": "尺码", "fontSize": 14, "color": "#666666", "width": 60}
+        }
+      },
+      {
+        "id": "sku_size_options",
+        "component": {
+          "Row": {"spacing": 8}
+        },
+        "children": {
+          "dataBinding": "/product.sku.1.options",
+          "templateComponentId": "sku_size_item"
+        }
+      },
+      {
+        "id": "sku_option_item",
+        "component": {
+          "Image": {"src": {"binding": "image"}, "width": 32, "height": 32, "cornerRadius": 4, "border": 1}
+        }
+      },
+      {
+        "id": "sku_size_item",
+        "component": {
+          "Text": {"text": {"binding": "value"}, "fontSize": 12, "color": "#333333", "backgroundColor": "#F5F5F5", "padding": 8}
+        }
+      },
+      {
+        "id": "service_card",
+        "component": {
+          "Column": {"backgroundColor": "#FFFFFF", "padding": 12, "spacing": 8, "marginTop": 8}
+        },
+        "children": {
+          "explicitList": ["service_label", "service_list"]
+        }
+      },
+      {
+        "id": "service_label",
+        "component": {
+          "Text": {"text": "服务", "fontSize": 14, "color": "#333333", "fontWeight": true}
+        }
+      },
+      {
+        "id": "service_list",
+        "component": {
+          "Row": {"spacing": 16}
+        },
+        "children": {
+          "dataBinding": "/service",
+          "templateComponentId": "service_item"
+        }
+      },
+      {
+        "id": "service_item",
+        "component": {
+          "Row": {"spacing": 4}
+        },
+        "children": {
+          "explicitList": ["service_icon", "service_text"]
+        }
+      },
+      {
+        "id": "service_icon",
+        "component": {
+          "Text": {"text": {"binding": "icon"}, "fontSize": 12}
+        }
+      },
+      {
+        "id": "service_text",
+        "component": {
+          "Text": {"text": {"binding": "text"}, "fontSize": 12, "color": "#666666"}
+        }
+      },
+      {
+        "id": "shop_card",
+        "component": {
+          "Column": {"backgroundColor": "#FFFFFF", "padding": 12, "spacing": 8, "marginTop": 8}
+        },
+        "children": {
+          "explicitList": ["shop_info"]
+        }
+      },
+      {
+        "id": "shop_info",
+        "component": {
+          "Row": {"align": "center", "spacing": 12}
+        },
+        "children": {
+          "explicitList": ["shop_icon", "shop_detail"]
+        }
+      },
+      {
+        "id": "shop_icon",
+        "component": {
+          "Image": {"src": {"binding": "product.shopIcon"}, "width": 48, "height": 48, "cornerRadius": 8}
+        }
+      },
+      {
+        "id": "shop_detail",
+        "component": {
+          "Column": {"spacing": 4}
+        },
+        "children": {
+          "explicitList": ["shop_name", "shop_score"]
+        }
+      },
+      {
+        "id": "shop_name",
+        "component": {
+          "Text": {"text": {"binding": "product.shop"}, "fontSize": 14, "color": "#333333"}
+        }
+      },
+      {
+        "id": "shop_score",
+        "component": {
+          "Text": {"text": {"binding": "product.shopScore"}, "fontSize": 12, "color": "#FF6600"}
+        }
+      },
+      {
+        "id": "detail_tabs",
+        "component": {
+          "Column": {"backgroundColor": "#FFFFFF", "padding": 12, "spacing": 8, "marginTop": 8}
+        },
+        "children": {
+          "explicitList": ["detail_title", "features_list", "description_text"]
+        }
+      },
+      {
+        "id": "detail_title",
+        "component": {
+          "Text": {"text": "商品详情", "fontSize": 14, "color": "#333333", "fontWeight": true}
+        }
+      },
+      {
+        "id": "features_list",
+        "component": {
+          "Row": {"spacing": 8, "wrap": true}
+        },
+        "children": {
+          "dataBinding": "/product.features",
+          "templateComponentId": "feature_item"
+        }
+      },
+      {
+        "id": "feature_item",
+        "component": {
+          "Text": {"text": {"binding": ""}, "fontSize": 12, "color": "#666666", "backgroundColor": "#F5F5F5", "padding": 6}
+        }
+      },
+      {
+        "id": "description_text",
+        "component": {
+          "Text": {"text": {"binding": "product.description"}, "fontSize": 14, "color": "#666666", "lineSpacing": 1.5}
+        }
+      },
+      {
+        "id": "review_card",
+        "component": {
+          "Column": {"backgroundColor": "#FFFFFF", "padding": 12, "spacing": 8, "marginTop": 8}
+        },
+        "children": {
+          "explicitList": ["review_header", "review_list"]
+        }
+      },
+      {
+        "id": "review_header",
+        "component": {
+          "Row": {"align": "center"}
+        },
+        "children": {
+          "explicitList": ["review_label", "review_more"]
+        }
+      },
+      {
+        "id": "review_label",
+        "component": {
+          "Text": {"text": "评价 (1000+)", "fontSize": 14, "color": "#333333", "fontWeight": true}
+        }
+      },
+      {
+        "id": "review_more",
+        "component": {
+          "Text": {"text": "查看全部 >", "fontSize": 12, "color": "#999999"}
+        }
+      },
+      {
+        "id": "review_list",
+        "component": {
+          "Column": {"spacing": 12}
+        },
+        "children": {
+          "dataBinding": "/reviews",
+          "templateComponentId": "review_item"
+        }
+      },
+      {
+        "id": "review_item",
+        "component": {
+          "Column": {"spacing": 8}
+        },
+        "children": {
+          "explicitList": ["review_user_row", "review_content"]
+        }
+      },
+      {
+        "id": "review_user_row",
+        "component": {
+          "Row": {"align": "center", "spacing": 8}
+        },
+        "children": {
+          "explicitList": ["review_avatar", "review_user"]
+        }
+      },
+      {
+        "id": "review_avatar",
+        "component": {
+          "Image": {"src": {"binding": "avatar"}, "width": 32, "height": 32, "cornerRadius": 16}
+        }
+      },
+      {
+        "id": "review_user",
+        "component": {
+          "Text": {"text": {"binding": "user"}, "fontSize": 12, "color": "#999999"}
+        }
+      },
+      {
+        "id": "review_content",
+        "component": {
+          "Text": {"text": {"binding": "content"}, "fontSize": 14, "color": "#333333"}
+        }
+      },
+      {
+        "id": "recommend_card",
+        "component": {
+          "Column": {"backgroundColor": "#FFFFFF", "padding": 12, "spacing": 8, "marginTop": 8}
+        },
+        "children": {
+          "explicitList": ["recommend_title", "recommend_grid"]
+        }
+      },
+      {
+        "id": "recommend_title",
+        "component": {
+          "Text": {"text": "为你推荐", "fontSize": 14, "color": "#333333", "fontWeight": true}
+        }
+      },
+      {
+        "id": "recommend_grid",
+        "component": {
+          "Grid": {"columns": 2, "spacing": 8}
+        },
+        "children": {
+          "dataBinding": "/recommend",
+          "templateComponentId": "recommend_item"
+        }
+      },
+      {
+        "id": "recommend_item",
+        "component": {
+          "Column": {"spacing": 4}
+        },
+        "children": {
+          "explicitList": ["recommend_image", "recommend_title", "recommend_price"]
+        }
+      },
+      {
+        "id": "recommend_image",
+        "component": {
+          "Image": {"src": {"binding": "image"}, "width": "match", "height": 100, "objectFit": "cover"}
+        }
+      },
+      {
+        "id": "recommend_title",
+        "component": {
+          "Text": {"text": {"binding": "title"}, "fontSize": 12, "color": "#333333", "maxLines": 2}
+        }
+      },
+      {
+        "id": "recommend_price",
+        "component": {
+          "Text": {"text": {"literalString": "¥", "binding": "price"}, "fontSize": 14, "color": "#FF6600", "fontWeight": true}
+        }
+      },
+      {
+        "id": "bottom_spacer",
+        "component": {
+          "Spacer": {"height": 80}
+        }
+      }
+    ]
+  }
+}

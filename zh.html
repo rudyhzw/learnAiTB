@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A2UI 架构图</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Noto Sans SC', sans-serif; }
+        .box { transition: all 0.3s ease; }
+        .box:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        .arrow { animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-box { animation: slideIn 0.5s ease forwards; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen p-8">
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-4xl font-bold text-center text-slate-800 mb-2">A2UI 协议架构图</h1>
+        <p class="text-center text-slate-500 mb-8">Agent to UI Protocol - Android 实现架构</p>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+            <div class="bg-white rounded-2xl p-6 shadow-lg">
+                <h2 class="text-xl font-bold text-slate-700 mb-4 flex items-center">
+                    <span class="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center text-white text-sm mr-2">1</span>
+                    数据层
+                </h2>
+                <div class="space-y-3">
+                    <div class="box bg-gradient-to-r from-orange-50 to-orange-100 border-l-4 border-orange-500 p-4 rounded-lg animate-box" style="animation-delay: 0.1s">
+                        <h3 class="font-semibold text-slate-800">A2UIJsonDataSource</h3>
+                        <p class="text-sm text-slate-500 mt-1">JSONL 数据源加载</p>
+                        <div class="text-xs text-slate-400 mt-2">loadMessagesFromAsset()</div>
+                    </div>
+                    <div class="box bg-gradient-to-r from-orange-50 to-orange-100 border-l-4 border-orange-500 p-4 rounded-lg animate-box" style="animation-delay: 0.2s">
+                        <h3 class="font-semibold text-slate-800">A2UIMessageParser</h3>
+                        <p class="text-sm text-slate-500 mt-1">JSON 消息解析</p>
+                        <div class="text-xs text-slate-400 mt-2">parseMessage()</div>
+                    </div>
+                    <div class="box bg-gradient-to-r from-orange-50 to-orange-100 border-l-4 border-orange-500 p-4 rounded-lg animate-box" style="animation-delay: 0.3s">
+                        <h3 class="font-semibold text-slate-800">A2UIStreamHandler</h3>
+                        <p class="text-sm text-slate-500 mt-1">流式消息处理</p>
+                        <div class="text-xs text-slate-400 mt-2">消息队列管理</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-2xl p-6 shadow-lg">
+                <h2 class="text-xl font-bold text-slate-700 mb-4 flex items-center">
+                    <span class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white text-sm mr-2">2</span>
+                    核心层
+                </h2>
+                <div class="space-y-3">
+                    <div class="box bg-gradient-to-r from-blue-50 to-blue-100 border-l-4 border-blue-500 p-4 rounded-lg animate-box" style="animation-delay: 0.2s">
+                        <h3 class="font-semibold text-slate-800">A2UISurfaceManager</h3>
+                        <p class="text-sm text-slate-500 mt-1">Surface 管理器</p>
+                        <div class="text-xs text-slate-400 mt-2">createSurface / deleteSurface</div>
+                    </div>
+                    <div class="box bg-gradient-to-r from-blue-50 to-blue-100 border-l-4 border-blue-500 p-4 rounded-lg animate-box" style="animation-delay: 0.3s">
+                        <h3 class="font-semibold text-slate-800">A2UISurface</h3>
+                        <p class="text-sm text-slate-500 mt-1">UI 渲染区域容器</p>
+                        <div class="text-xs text-slate-400 mt-2">组件存储 / 数据模型</div>
+                    </div>
+                    <div class="box bg-gradient-to-r from-blue-50 to-blue-100 border-l-4 border-blue-500 p-4 rounded-lg animate-box" style="animation-delay: 0.4s">
+                        <h3 class="font-semibold text-slate-800">A2UIMessage</h3>
+                        <p class="text-sm text-slate-500 mt-1">协议消息定义</p>
+                        <div class="text-xs text-slate-400 mt-2">createSurface / updateDataModel / updateComponents</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-2xl p-6 shadow-lg">
+                <h2 class="text-xl font-bold text-slate-700 mb-4 flex items-center">
+                    <span class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center text-white text-sm mr-2">3</span>
+                    渲染层
+                </h2>
+                <div class="space-y-3">
+                    <div class="box bg-gradient-to-r from-green-50 to-green-100 border-l-4 border-green-500 p-4 rounded-lg animate-box" style="animation-delay: 0.3s">
+                        <h3 class="font-semibold text-slate-800">A2UIRenderer</h3>
+                        <p class="text-sm text-slate-500 mt-1">组件渲染器</p>
+                        <div class="text-xs text-slate-400 mt-2">30+ 组件类型</div>
+                    </div>
+                    <div class="box bg-gradient-to-r from-green-50 to-green-100 border-l-4 border-green-500 p-4 rounded-lg animate-box" style="animation-delay: 0.4s">
+                        <h3 class="font-semibold text-slate-800">A2UIComponentType</h3>
+                        <p class="text-sm text-slate-500 mt-1">组件类型常量</p>
+                        <div class="text-xs text-slate-400 mt-2">Text / Button / Image / Grid</div>
+                    </div>
+                    <div class="box bg-gradient-to-r from-green-50 to-green-100 border-l-4 border-green-500 p-4 rounded-lg animate-box" style="animation-delay: 0.5s">
+                        <h3 class="font-semibold text-slate-800">A2UIListAdapter</h3>
+                        <p class="text-sm text-slate-500 mt-1">列表适配器</p>
+                        <div class="text-xs text-slate-400 mt-2">RecyclerView 集成</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-2xl p-6 shadow-lg mb-8">
+            <h2 class="text-xl font-bold text-slate-700 mb-4 flex items-center">
+                <span class="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center text-white text-sm mr-2">4</span>
+                数据流向
+            </h2>
+            <div class="flex flex-wrap items-center justify-center gap-4">
+                <div class="box bg-orange-500 text-white rounded-xl p-4 text-center">
+                    <div class="font-bold">JSON 数据源</div>
+                    <div class="text-xs text-orange-100">a2ui_main_page.json</div>
+                </div>
+                <div class="arrow text-slate-400 text-2xl">→</div>
+                <div class="box bg-orange-500 text-white rounded-xl p-4 text-center">
+                    <div class="font-bold">A2UIJsonDataSource</div>
+                    <div class="text-xs text-orange-100">加载 & 解析</div>
+                </div>
+                <div class="arrow text-slate-400 text-2xl">→</div>
+                <div class="box bg-blue-500 text-white rounded-xl p-4 text-center">
+                    <div class="font-bold">A2UIMessage</div>
+                    <div class="text-xs text-blue-100">消息对象</div>
+                </div>
+                <div class="arrow text-slate-400 text-2xl">→</div>
+                <div class="box bg-purple-500 text-white rounded-xl p-4 text-center">
+                    <div class="font-bold">A2UIStreamHandler</div>
+                    <div class="text-xs text-purple-100">消息分发</div>
+                </div>
+                <div class="arrow text-slate-400 text-2xl">→</div>
+                <div class="box bg-green-500 text-white rounded-xl p-4 text-center">
+                    <div class="font-bold">A2UIRenderer</div>
+                    <div class="text-xs text-green-100">渲染 UI</div>
+                </div>
+                <div class="arrow text-slate-400 text-2xl">→</div>
+                <div class="box bg-slate-600 text-white rounded-xl p-4 text-center">
+                    <div class="font-bold">Android View</div>
+                    <div class="text-xs text-slate-300">用户界面</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-2xl p-6 shadow-lg mb-8">
+            <h2 class="text-xl font-bold text-slate-700 mb-4 flex items-center">
+                <span class="w-8 h-8 bg-teal-500 rounded-lg flex items-center justify-center text-white text-sm mr-2">5</span>
+                支持的组件类型
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                <div class="bg-slate-100 rounded-lg p-3 text-center text-sm text-slate-600 font-medium">Text</div>
+                <div class="bg-slate-100 rounded-lg p-3 text-center text-sm text-slate-600 font-medium">Button</div>
+                <div class="bg-slate-100 rounded-lg p-3 text-center text-sm text-slate-600 font-medium">Row</div>
+                <div class="bg-slate-100 rounded-lg p-3 text-center text-sm text-slate-600 font-medium">Column</div>
+                <div class="bg-slate-100 rounded-lg p-3 text-center text-sm text-slate-600 font-medium">Image</div>
+                <div class="bg-slate-100 rounded-lg p-3 text-center text-sm text-slate-600 font-medium">Card</div>
+                <div class="bg-slate-100 rounded-lg p-3 text-center text-sm text-slate-600 font-medium">List</div>
+                <div class="bg-slate-100 rounded-lg p-3 text-center text-sm text-slate-600 font-medium">Grid</div>
+                <div class="bg-slate-100 rounded-lg p-3 text-center text-sm text-slate-600 font-medium">ScrollView</div>
+                <div class="bg-slate-100 rounded-lg p-3 text-center text-sm text-slate-600 font-medium">FlatList</div>
+                <div class="bg-slate-100 rounded-lg p-3 text-center text-sm text-slate-600 font-medium">Input</div>
+                <div class="bg-slate-100 rounded-lg p-3 text-center text-sm text-slate-600 font-medium">Badge</div>
+                <div class="bg-slate-100 rounded-lg p-3 text-center text-sm text-slate-600 font-medium">Spacer</div>
+                <div class="bg-slate-100 rounded-lg p-3 text-center text-sm text-slate-600 font-medium">Divider</div>
+                <div class="bg-slate-100 rounded-lg p-3 text-center text-sm text-slate-600 font-medium">Avatar</div>
+                <div class="bg-slate-100 rounded-lg p-3 text-center text-sm text-slate-600 font-medium">Stack</div>
+                <div class="bg-slate-100 rounded-lg p-3 text-center text-sm text-slate-600 font-medium">Wrap</div>
+                <div class="bg-slate-100 rounded-lg p-3 text-center text-sm text-slate-600 font-medium">Progress</div>
+                <div class="bg-slate-100 rounded-lg p-3 text-center text-sm text-slate-600 font-medium">Switch</div>
+                <div class="bg-slate-100 rounded-lg p-3 text-center text-sm text-slate-600 font-medium">CheckBox</div>
+                <div class="bg-slate-100 rounded-lg p-3 text-center text-sm text-slate-600 font-medium">Tabs</div>
+                <div class="bg-slate-100 rounded-lg p-3 text-center text-sm text-slate-600 font-medium">Carousel</div>
+                <div class="bg-slate-100 rounded-lg p-3 text-center text-sm text-slate-600 font-medium">Modal</div>
+                <div class="bg-slate-100 rounded-lg p-3 text-center text-sm text-slate-600 font-medium">BottomSheet</div>
+                <div class="bg-slate-100 rounded-lg p-3 text-center text-sm text-slate-600 font-medium">...</div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-2xl p-6 shadow-lg mb-8">
+            <h2 class="text-xl font-bold text-slate-700 mb-4 flex items-center">
+                <span class="w-8 h-8 bg-rose-500 rounded-lg flex items-center justify-center text-white text-sm mr-2">6</span>
+                A2UI 消息类型
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl p-5 text-white">
+                    <h3 class="font-bold text-lg">createSurface</h3>
+                    <p class="text-orange-100 text-sm mt-1">创建 Surface</p>
+                    <div class="mt-4 text-xs bg-orange-700 rounded-lg p-3">
+                        <div>surfaceId: String</div>
+                        <div>catalogId: String?</div>
+                        <div>theme: Theme?</div>
+                        <div>rootComponentId: String?</div>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-5 text-white">
+                    <h3 class="font-bold text-lg">updateDataModel</h3>
+                    <p class="text-blue-100 text-sm mt-1">更新数据模型</p>
+                    <div class="mt-4 text-xs bg-blue-700 rounded-lg p-3">
+                        <div>surfaceId: String</div>
+                        <div>path: String</div>
+                        <div>data: Any?</div>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl p-5 text-white">
+                    <h3 class="font-bold text-lg">updateComponents</h3>
+                    <p class="text-purple-100 text-sm mt-1">更新 UI 组件</p>
+                    <div class="mt-4 text-xs bg-purple-700 rounded-lg p-3">
+                        <div>surfaceId: String</div>
+                        <div>components: List</div>
+                        <div>&nbsp;&nbsp;├── id: String</div>
+                        <div>&nbsp;&nbsp;├── component: Map</div>
+                        <div>&nbsp;&nbsp;├── children: Map?</div>
+                        <div>&nbsp;&nbsp;└── events: Map?</div>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-red-500 to-red-600 rounded-xl p-5 text-white">
+                    <h3 class="font-bold text-lg">deleteSurface</h3>
+                    <p class="text-red-100 text-sm mt-1">删除 Surface</p>
+                    <div class="mt-4 text-xs bg-red-700 rounded-lg p-3">
+                        <div>surfaceId: String</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-2xl p-6 shadow-lg">
+            <h2 class="text-xl font-bold text-slate-700 mb-4 flex items-center">
+                <span class="w-8 h-8 bg-cyan-500 rounded-lg flex items-center justify-center text-white text-sm mr-2">7</span>
+                项目文件结构
+            </h2>
+            <div class="font-mono text-sm bg-slate-800 text-slate-200 p-5 rounded-xl overflow-x-auto">
+                <div><span class="text-cyan-400">app/src/main/</span></div>
+                <div class="ml-4"><span class="text-yellow-400">├── java/com/example/taobao/</span></div>
+                <div class="ml-8"><span class="text-yellow-400">├── MainActivity.kt</span> <span class="text-slate-500"># 主页面</span></div>
+                <div class="ml-8"><span class="text-yellow-400">├── ProductActivity.kt</span> <span class="text-slate-500"># 商品详情</span></div>
+                <div class="ml-8"><span class="text-yellow-400">├── A2UIActivity.kt</span> <span class="text-slate-500"># A2UI演示</span></div>
+                <div class="ml-8"><span class="text-yellow-400">└── a2ui/</span></div>
+                <div class="ml-12"><span class="text-blue-400">├── A2UIMessage.kt</span> <span class="text-slate-500"># 消息类型</span></div>
+                <div class="ml-12"><span class="text-blue-400">├── A2UIComponentType.kt</span> <span class="text-slate-500"># 组件常量</span></div>
+                <div class="ml-12"><span class="text-blue-400">├── A2UIMessageParser.kt</span> <span class="text-slate-500"># JSON解析</span></div>
+                <div class="ml-12"><span class="text-blue-400">├── A2UIJsonDataSource.kt</span> <span class="text-slate-500"># 数据源</span></div>
+                <div class="ml-12"><span class="text-blue-400">├── A2UIStreamHandler.kt</span> <span class="text-slate-500"># 流处理</span></div>
+                <div class="ml-12"><span class="text-blue-400">├── A2UISurfaceManager.kt</span> <span class="text-slate-500"># Surface管理</span></div>
+                <div class="ml-12"><span class="text-blue-400">├── A2UISurface.kt</span> <span class="text-slate-500"># Surface容器</span></div>
+                <div class="ml-12"><span class="text-blue-400">├── A2UIRenderer.kt</span> <span class="text-slate-500"># 渲染器</span></div>
+                <div class="ml-12"><span class="text-blue-400">├── A2UIListAdapter.kt</span> <span class="text-slate-500"># 列表适配器</span></div>
+                <div class="ml-12"><span class="text-blue-400">└── A2UIDataSource.kt</span> <span class="text-slate-500"># 示例数据</span></div>
+                <div class="ml-4"><span class="text-yellow-400">└── assets/</span></div>
+                <div class="ml-8"><span class="text-green-400">├── a2ui_main_page.json</span> <span class="text-slate-500"># 首页数据</span></div>
+                <div class="ml-8"><span class="text-green-400">└── a2ui_product_detail.json</span> <span class="text-slate-500"># 商品详情</span></div>
+            </div>
+        </div>
+        
+        <div class="mt-8 text-center text-slate-400 text-sm">
+            <p>A2UI (Agent to UI) Protocol - Android Client Implementation</p>
+            <p class="mt-1">基于 A2UI v0.9 协议实现</p>
+        </div>
+    </div>
+</body>
+</html>

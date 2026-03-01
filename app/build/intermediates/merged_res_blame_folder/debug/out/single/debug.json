@@ -1,0 +1,94 @@
+[
+    {
+        "merged": "com.example.taobao.app-merged_res-34:/drawable_home_card_bg.xml.flat",
+        "source": "com.example.taobao.app-main-36:/drawable/home_card_bg.xml"
+    },
+    {
+        "merged": "com.example.taobao.app-merged_res-34:/layout_item_product_type1.xml.flat",
+        "source": "com.example.taobao.app-main-36:/layout/item_product_type1.xml"
+    },
+    {
+        "merged": "com.example.taobao.app-merged_res-34:/layout_activity_a2ui_main.xml.flat",
+        "source": "com.example.taobao.app-main-36:/layout/activity_a2ui_main.xml"
+    },
+    {
+        "merged": "com.example.taobao.app-merged_res-34:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.taobao.app-main-36:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.taobao.app-merged_res-34:/drawable_dot_normal.xml.flat",
+        "source": "com.example.taobao.app-main-36:/drawable/dot_normal.xml"
+    },
+    {
+        "merged": "com.example.taobao.app-merged_res-34:/layout_item_product_text.xml.flat",
+        "source": "com.example.taobao.app-main-36:/layout/item_product_text.xml"
+    },
+    {
+        "merged": "com.example.taobao.app-merged_res-34:/layout_activity_product.xml.flat",
+        "source": "com.example.taobao.app-main-36:/layout/activity_product.xml"
+    },
+    {
+        "merged": "com.example.taobao.app-merged_res-34:/drawable_dot_selected.xml.flat",
+        "source": "com.example.taobao.app-main-36:/drawable/dot_selected.xml"
+    },
+    {
+        "merged": "com.example.taobao.app-merged_res-34:/layout_item_recycler_header.xml.flat",
+        "source": "com.example.taobao.app-main-36:/layout/item_recycler_header.xml"
+    },
+    {
+        "merged": "com.example.taobao.app-merged_res-34:/layout_item_product_content.xml.flat",
+        "source": "com.example.taobao.app-main-36:/layout/item_product_content.xml"
+    },
+    {
+        "merged": "com.example.taobao.app-merged_res-34:/layout_activity_main.xml.flat",
+        "source": "com.example.taobao.app-main-36:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.taobao.app-merged_res-34:/layout_item_product.xml.flat",
+        "source": "com.example.taobao.app-main-36:/layout/item_product.xml"
+    },
+    {
+        "merged": "com.example.taobao.app-merged_res-34:/layout_activity_simple_a2ui.xml.flat",
+        "source": "com.example.taobao.app-main-36:/layout/activity_simple_a2ui.xml"
+    },
+    {
+        "merged": "com.example.taobao.app-merged_res-34:/drawable_btn_orange_left.xml.flat",
+        "source": "com.example.taobao.app-main-36:/drawable/btn_orange_left.xml"
+    },
+    {
+        "merged": "com.example.taobao.app-merged_res-34:/layout_item_simple_product.xml.flat",
+        "source": "com.example.taobao.app-main-36:/layout/item_simple_product.xml"
+    },
+    {
+        "merged": "com.example.taobao.app-merged_res-34:/layout_activity_a2ui_product.xml.flat",
+        "source": "com.example.taobao.app-main-36:/layout/activity_a2ui_product.xml"
+    },
+    {
+        "merged": "com.example.taobao.app-merged_res-34:/layout_item_product_type2.xml.flat",
+        "source": "com.example.taobao.app-main-36:/layout/item_product_type2.xml"
+    },
+    {
+        "merged": "com.example.taobao.app-merged_res-34:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.taobao.app-main-36:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.taobao.app-merged_res-34:/drawable_search_bg.xml.flat",
+        "source": "com.example.taobao.app-main-36:/drawable/search_bg.xml"
+    },
+    {
+        "merged": "com.example.taobao.app-merged_res-34:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.taobao.app-main-36:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.taobao.app-merged_res-34:/drawable_btn_red_right.xml.flat",
+        "source": "com.example.taobao.app-main-36:/drawable/btn_red_right.xml"
+    },
+    {
+        "merged": "com.example.taobao.app-merged_res-34:/layout_item_banner.xml.flat",
+        "source": "com.example.taobao.app-main-36:/layout/item_banner.xml"
+    },
+    {
+        "merged": "com.example.taobao.app-merged_res-34:/layout_item_product_type3.xml.flat",
+        "source": "com.example.taobao.app-main-36:/layout/item_product_type3.xml"
+    }
+]

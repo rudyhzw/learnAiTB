@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.TaobaoApp" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/taobao_orange</item>
+        <item name="colorPrimaryVariant">@color/taobao_orange</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/taobao_orange</item>
+        <item name="android:statusBarColor">@color/taobao_orange</item>
+    </style>
+</resources>

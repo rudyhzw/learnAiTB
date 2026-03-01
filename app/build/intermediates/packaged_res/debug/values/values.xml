@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="divider">#EEEEEE</color>
+    <color name="gray">#999999</color>
+    <color name="gray_dark">#666666</color>
+    <color name="gray_light">#F5F5F5</color>
+    <color name="taobao_orange">#FF5000</color>
+    <color name="taobao_red">#FF0000</color>
+    <color name="text_primary">#333333</color>
+    <color name="white">#FFFFFF</color>
+    <string name="app_name">淘宝</string>
+    <string name="search_hint">搜索商品、品牌</string>
+    <style name="Theme.TaobaoApp" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/taobao_orange</item>
+        <item name="colorPrimaryVariant">@color/taobao_orange</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/taobao_orange</item>
+        <item name="android:statusBarColor">@color/taobao_orange</item>
+    </style>
+</resources>

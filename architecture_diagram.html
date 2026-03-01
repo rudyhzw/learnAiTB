@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleA2UIActivity 架构图</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        .section {
+            background: rgba(255,255,255,0.95);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .section-title {
+            color: #ff6600;
+            font-size: 18px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ff6600;
+        }
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .component {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .component.data {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+        .component.ui {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .component.core {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        .component-name {
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .component-desc {
+            font-size: 11px;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+        .flow-section {
+            margin-top: 20px;
+        }
+        .flow-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .flow-number {
+            background: #ff6600;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .flow-text {
+            color: #333;
+        }
+        .highlight {
+            color: #ff6600;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛒 SimpleA2UIActivity 架构图</h1>
+        
+        <div class="section">
+            <div class="section-title">📦 核心组件</div>
+            <div class="component-grid">
+                <div class="component core">
+                    <div class="component-name">SimpleA2UIActivity</div>
+                    <div class="component-desc">主Activity<br/>处理生命周期</div>
+                </div>
+                <div class="component data">
+                    <div class="component-name">A2UIDataSource</div>
+                    <div class="component-desc">数据源<br/>提供JSON数据</div>
+                </div>
+                <div class="component ui">
+                    <div class="component-name">renderUI()</div>
+                    <div class="component-desc">渲染函数<br/>构建View树</div>
+                </div>
+                <div class="component ui">
+                    <div class="component-name">ProductCard</div>
+                    <div class="component-desc">商品卡片组件<br/>处理点击事件</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">🔄 数据流程</div>
+            <div class="flow-section">
+                <div class="flow-item">
+                    <div class="flow-number">1</div>
+                    <div class="flow-text">用户启动 → <span class="highlight">onCreate()</span> → 初始化A2UIDataSource</div>
+                </div>
+                <div class="flow-item">
+                    <div class="flow-number">2</div>
+                    <div class="flow-text">调用 <span class="highlight">getMainPageMessages()</span> → 获取banners/categories/products数据</div>
+                </div>
+                <div class="flow-item">
+                    <div class="flow-number">3</div>
+                    <div class="flow-text">执行 <span class="highlight">renderUI()</span> → 动态创建ScrollView/Header/Banner/Grid</div>
+                </div>
+                <div class="flow-item">
+                    <div class="flow-number">4</div>
+                    <div class="flow-text">循环调用 <span class="highlight">createProductCard()</span> → 为每个商品创建卡片View</div>
+                </div>
+                <div class="flow-item">
+                    <div class="flow-number">5</div>
+                    <div class="flow-text">点击商品 → <span class="highlight">更新TextView</span> → 显示Toast提示</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">📱 UI层次结构</div>
+            <div class="mermaid">
+graph TD
+    A[ScrollView<br/>根容器] --> B[LinearLayout<br/>内容容器]
+    B --> C[Header<br/>橙色标题栏]
+    B --> D[Banner<br/>轮播图]
+    B --> E[Category<br/>分类图标]
+    B --> F[ProductGrid<br/>商品网格]
+    F --> G[LeftColumn<br/>左列]
+    F --> H[RightColumn<br/>右列]
+    G --> I[ProductCard1]
+    G --> K[ProductCard3]
+    H --> J[ProductCard2]
+    H --> L[ProductCard4]
+    I --> M[ImageView<br/>商品图]
+    I --> N[TextView<br/>标题]
+    I --> O[TextView<br/>价格]
+    I --> P[TextView<br/>销量]
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">🎯 关键优化点</div>
+            <div class="flow-section">
+                <div class="flow-item">
+                    <div class="flow-number">✓</div>
+                    <div class="flow-text"><span class="highlight">局部更新</span> - 点击卡片只更新该TextView，不重绘整个界面</div>
+                </div>
+                <div class="flow-item">
+                    <div class="flow-number">✓</div>
+                    <div class="flow-text"><span class="highlight">数据驱动</span> - products列表存储真实数据，支持动态修改</div>
+                </div>
+                <div class="flow-item">
+                    <div class="flow-number">✓</div>
+                    <div class="flow-text"><span class="highlight">View引用缓存</span> - productPriceViews Map缓存价格TextView</div>
+                </div>
+                <div class="flow-item">
+                    <div class="flow-number">✓</div>
+                    <div class="flow-text"><span class="highlight">代码复用</span> - createProductCard()函数复用，减少代码重复</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+    </script>
+</body>
+</html>
